@@ -21,5 +21,20 @@ createApp({
                 }
             ]
         }
+    },
+    methods: {
+        removeItem(index) {
+            this.todos.splice(index, 1)
+        },
+
+        addTask() {
+            if (this.message.length >= 5) {
+                this.todos.unshift({ text: this.message, done: false });
+                this.message = "";
+                this.error = false;
+            } else {
+                this.error = true;
+            }
+        }
     }
-})
+}).mount("#app")
